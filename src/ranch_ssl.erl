@@ -99,7 +99,7 @@ accept(LSocket, Timeout) ->
 
 -spec accept_ack(ssl:sslsocket(), timeout()) -> ok.
 accept_ack(CSocket, Timeout) ->
-	case ssl:ssl_accept(CSocket, Timeout) of
+	case ssl:handshake(CSocket, Timeout) of
 		ok ->
 			ok;
 		%% Garbage was most likely sent to the socket, don't error out.
